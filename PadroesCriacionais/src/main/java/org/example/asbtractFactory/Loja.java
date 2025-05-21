@@ -3,23 +3,15 @@ package org.example.asbtractFactory;
 public class Loja {
 
     private Veiculo veiculo;
+    private Economico veiculoEconomico;
+    private Luxo veiculoLuxo;
 
-    public Veiculo criarVeiculoLuxo(String tipoVeiculo){
-        switch (tipoVeiculo){
-            case "moto":
-                return new MotoLuxo();
-            case "carro":
-                return new CarroLuxo();
-        }
-        return null;
+    public void criarVeiculo(fabricaVeiculo fabrica){
+        this.veiculoEconomico = fabrica.criarEconomico();
+        this.veiculoLuxo = fabrica.criarLuxo();
     }
-    public Veiculo criarVeiculoEconomico(String tipoVeiculo){
-        switch (tipoVeiculo){
-            case "moto":
-                return new MotoEconomica();
-            case "carro":
-                return new CarroEconomico();
-        }
-        return null;
+    public String exibirVeiculo(){
+        return this.veiculoEconomico.toString() + "\n"
+                + this.veiculoLuxo.toString();
     }
 }
